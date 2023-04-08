@@ -1,0 +1,29 @@
+.timeSlider{
+	text-align: center;
+	font-family: 'Indie Flower', cursive;
+	font-size: 30px;
+	color: white;
+	z-index: 5;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	&__item{
+		margin-bottom: 20px;
+	}
+	&__item:last-child{
+		margin-bottom: 0;
+	}
+
+	&__button{
+		background-color: #DDDDDD;
+		color: black;
+		padding: 10px 40px;
+		border-radius: 7px;
+		margin-top: 10px;
+		transition: 0.3s;
+		&:hover{
+			cursor: pointer;
+			background-color: white
+		}
+	}
+}

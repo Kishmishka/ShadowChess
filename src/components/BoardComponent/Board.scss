@@ -1,0 +1,14 @@
+.board{
+	width: 800px;
+	height: 800px;
+	display: flex;
+	flex-wrap: wrap;
+}
+.rotate_180{
+	transition: 0.3s;
+	transform: rotate(180deg);
+}
+.rotate_360{
+	transition: 0.3s;
+	transform: rotate(360deg);
+}

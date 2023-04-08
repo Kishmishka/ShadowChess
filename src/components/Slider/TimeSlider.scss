@@ -1,0 +1,35 @@
+.timeSlider {
+	min-width: 600px;
+	min-height: 20px;
+
+	&__track{
+		border-radius: 20px;
+		top:8px;
+		height: 20px;
+		background-color: #ddd;
+	
+	 
+	}
+	&__thumb{
+     background-image: url('../../img/dot2.svg');
+	  background-repeat: no-repeat;
+	  background-position:-1px 5px ;
+     width: 21px;
+     height: 30px;
+     outline: none;
+	 
+	}
+	&__mark{
+		cursor: pointer;
+      top: 8px;
+      width: 4px;
+      height: 20px;
+      background-color:#AAAAAA;
+		display: none;
+	}
+}
+
+.timeSlider__track.timeSlider__track-0 {
+	/* color of the track before the thumb */
+	background: white;
+ }

@@ -1,0 +1,16 @@
+
+.lostFigures{
+	font-family: 'Indie Flower', cursive;
+	font-size: 70px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	max-width: 300px;
+	&_elem{
+		display: flex;
+		align-items: center;
+	}
+	img{
+		height: 60px;
+	}
+}
