@@ -13,16 +13,21 @@ import './SwapMenu.scss'
 
 interface SwapMenuProps{
 	playerColor:Colors;
+	swapFigureFlag:boolean;
 	showWhiteSwapMenu:boolean;
 	setReplacementFigure:(figure:FigureName |null)=>void
+	setSwapFigureFlag:(swapFlag:boolean)=>void
 }
 
-const SwapMenu: FC<SwapMenuProps> = ({playerColor, showWhiteSwapMenu, setReplacementFigure}) => {
+const SwapMenu: FC<SwapMenuProps> = ({playerColor, showWhiteSwapMenu,swapFigureFlag, setSwapFigureFlag, setReplacementFigure}) => {
 	return(
 		<div className={['swapMenu', showWhiteSwapMenu? 'show':''].join(' ')}>
 			<div 
 			className="swapMenu__element"
-			onClick={()=>{setReplacementFigure(FigureName.QUEEN)}}>
+			onClick={()=>{
+				setReplacementFigure(FigureName.QUEEN);
+				setSwapFigureFlag(!swapFigureFlag);
+			}}>
 				<img src={playerColor===Colors.WHITE? queenWhiteLogo:queenBlackLogo}  alt="" />
 			</div>
 			<div className="swapMenu__element"

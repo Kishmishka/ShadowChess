@@ -39,6 +39,7 @@ function App() {
  const [blackKingForCheck, setBlackKingForCheck] = useState(false)
  const [showBlackSwapMenu, setShowBlackSwapMenu] = useState(false)
  const [showWhiteSwapMenu, setShowWhiteSwapMenu] = useState(false)
+ const [swapFigureFlag, setSwapFigureFlag] = useState(false)
  const [whiteReplacementFigure, setWhiteReplacementFigure] = useState<FigureName |null>(null)
  const [blackReplacementFigure, setBlackReplacementFigure] = useState<FigureName |null>(null)
  const [startScreen, setStartScreen]= useState<boolean>(true)
@@ -88,69 +89,72 @@ useEffect(()=>{
 			<div className="container">
 			<div className="Wpl">
 				<PlayerBoard
+				color={Colors.WHITE}
+				swapFigureFlag={swapFigureFlag}
 				goRip={whiteGoRip}
 				showTime={showTime}
 				bonusTime={bonusTime}
 				startTime={startTime}
 				showWhiteSwapMenu={showWhiteSwapMenu}
-				setReplacementFigure={setWhiteReplacementFigure}
-				setGoRip={setWhiteGoRip} 
+				figures={board.lostBlackFigures} 
 				goTimer={goTimer}
 				currentPlayer={currentPlayer}
-				color={Colors.WHITE}
+				setReplacementFigure={setWhiteReplacementFigure}
+				setGoRip={setWhiteGoRip} 
+				setSwapFigureFlag={setSwapFigureFlag}
 				setFigureSumm = {setWhiteFigureSumm} 
-				figures={board.lostBlackFigures} 
 				avatar={seteWhiteEmotion(whiteFigureSumm, blackFigureSumm)} />
 			</div>
 			<div  className={["board", whiteGoRip? "blackWin":"", blackGoRip? "whiteWin":"", rotate === 1 ? "rotate_180" : "rotate_360"].join(' ')}>
 				<div className={["board__setTime",startScreen? "showStartScreen":""].join(' ')}>
 					<StartScreen
+					time={startTime}
+					bonusTime={bonusTime}
 					setShowTime={setShowTime}
 					setBonusTime={setBonusTime}
 					setStartTime={setStartTime}
 					setStartScreen={setStartScreen}
-					time={startTime}
-					bonusTime={bonusTime}
 					></StartScreen>
 				</div>
 				<BoardComponent
-				setWhiteMate={setWhiteMate}
-				setBlackMate={setBlackMate}
-				setWhiteGoRip={setWhiteGoRip}
-				setBlackGoRip={setBlackGoRip}
+				board={board}
+				swapFigureFlag={swapFigureFlag}
 				showBlackSwapMenu={showBlackSwapMenu}
 				showWhiteSwapMenu={showWhiteSwapMenu}
 				whiteReplacementFigure={whiteReplacementFigure}
 				blackReplacementFigure={blackReplacementFigure}
-				setShowBlackSwapMenu={setShowBlackSwapMenu}
-				setShowWhiteSwapMenu={setShowWhiteSwapMenu} 
 				whiteKingForCheck={whiteKingForCheck}
 				blackKingForCheck={blackKingForCheck}
-				setBlackKingForCheck={setBlackKingForCheck}
-				setWhiteKingForCheck={setWhiteKingForCheck}
-				board={board} 
-				setBoards={setBoard} 
-				swapPlayer={swapPlayer} 
 				currentplayer={currentPlayer}
 				rotate={rotate}
-				/>
-				
+				setWhiteMate={setWhiteMate}
+				setBlackMate={setBlackMate}
+				setWhiteGoRip={setWhiteGoRip}
+				setBlackGoRip={setBlackGoRip}
+				setShowBlackSwapMenu={setShowBlackSwapMenu}
+				setShowWhiteSwapMenu={setShowWhiteSwapMenu} 
+				setBlackKingForCheck={setBlackKingForCheck}
+				setWhiteKingForCheck={setWhiteKingForCheck}
+				setBoards={setBoard} 
+				swapPlayer={swapPlayer} />
 			</div>
 			<div className="Bpl">
 				<PlayerBoard
+				color={Colors.BlACK}
+				swapFigureFlag={swapFigureFlag}
+				goTimer={goTimer}
+				currentPlayer={currentPlayer}
+				figures={board.lostWhiteFigures} 
 				goRip={blackGoRip}
 				showTime={showTime}
 				bonusTime={bonusTime}
 				startTime={startTime} 
 				showWhiteSwapMenu={showBlackSwapMenu}
+				setSwapFigureFlag={setSwapFigureFlag}
 				setReplacementFigure={setBlackReplacementFigure}
 				setGoRip={setBlackGoRip} 
-				goTimer={goTimer}
-				currentPlayer={currentPlayer}
-				color={Colors.BlACK}
 				setFigureSumm = {setBlackFigureSumm} 
-				figures={board.lostWhiteFigures} 
-				avatar={seteBlackEmotion(whiteFigureSumm, blackFigureSumm)} />
+				avatar={seteBlackEmotion(whiteFigureSumm, blackFigureSumm)}/>
 			</div>
 			</div>
 		</div>

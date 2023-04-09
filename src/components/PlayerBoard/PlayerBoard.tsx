@@ -18,12 +18,14 @@ interface PlayerBoardProps{
 	bonusTime:number
 	startTime:number
 	showWhiteSwapMenu:boolean;
+	swapFigureFlag:boolean;
 	setFigureSumm:(summ:number)=>void
 	setReplacementFigure:(figure:FigureName | null)=>void
 	setGoRip:(rip:boolean)=>void
+	setSwapFigureFlag:(swapFlag:boolean)=>void
 }
 
-const PlayerBoard: FC<PlayerBoardProps> = ({figures, goRip,showTime, avatar, color, bonusTime, startTime, currentPlayer, showWhiteSwapMenu, goTimer, setFigureSumm, setReplacementFigure, setGoRip}) => {
+const PlayerBoard: FC<PlayerBoardProps> = ({figures, swapFigureFlag,goRip,showTime, avatar, color, bonusTime, startTime, currentPlayer, showWhiteSwapMenu, goTimer,setSwapFigureFlag, setFigureSumm, setReplacementFigure, setGoRip}) => {
 	
 	return(
 		<div className='player'>
@@ -39,9 +41,11 @@ const PlayerBoard: FC<PlayerBoardProps> = ({figures, goRip,showTime, avatar, col
 				/>
 			</div>
 				<SwapMenu
+				swapFigureFlag={swapFigureFlag}
+				playerColor={color}
 				showWhiteSwapMenu={showWhiteSwapMenu}
 				setReplacementFigure={setReplacementFigure}
-				playerColor={color}
+				setSwapFigureFlag={setSwapFigureFlag}
 				/>
 		
 			

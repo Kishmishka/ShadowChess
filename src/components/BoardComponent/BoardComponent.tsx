@@ -17,6 +17,7 @@ interface BoardProps{
 	showWhiteSwapMenu:boolean;
 	showBlackSwapMenu:boolean;
 	rotate:Number
+	swapFigureFlag:boolean;
 	swapPlayer: () => void
 	setBoards:(board:Board)=>void
 	setWhiteKingForCheck:(chek:boolean) => void
@@ -38,6 +39,7 @@ const BoardComponent:FC<BoardProps> = (
 	rotate, 
 	whiteReplacementFigure,
 	blackReplacementFigure,
+	swapFigureFlag,
 	setBlackMate,
 	setWhiteMate,
 	setWhiteGoRip,
@@ -185,16 +187,17 @@ const BoardComponent:FC<BoardProps> = (
 			<React.Fragment key={index}>
 				{row.map(cell=>
 					<CellComponent
-					swapPlayer={swapPlayer}
+					swapFigureFlag={swapFigureFlag}
+					rotate={rotate}
+					cell={cell} 
+					key={cell.id}
+					selected={cell.x === selectedCell?.x && cell.y === selectedCell?.y}
 					whiteReplacementFigure = {whiteReplacementFigure}
 					blackReplacementFigure = {blackReplacementFigure}
 					setShowBlackSwapMenu={setShowBlackSwapMenu}
 					setShowWhiteSwapMenu={setShowWhiteSwapMenu}
-					rotate={rotate}
+					swapPlayer={swapPlayer}
 					clickCell={clickCell} 
-					cell={cell} 
-					key={cell.id}
-					selected={cell.x === selectedCell?.x && cell.y === selectedCell?.y}
 					/>
 					)}
 			</React.Fragment>

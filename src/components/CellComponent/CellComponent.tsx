@@ -12,6 +12,7 @@ interface CellProps{
 	cell:Cell;
 	selected: boolean;
 	rotate:Number;
+	swapFigureFlag:boolean
 	blackReplacementFigure:FigureName|null;
 	whiteReplacementFigure:FigureName|null;
 	clickCell:(cell:Cell)=>void
@@ -24,6 +25,7 @@ const CellComponent: FC<CellProps> = ({
 	cell, 
 	selected, 
 	rotate,
+	swapFigureFlag,
 	blackReplacementFigure, 
 	whiteReplacementFigure,
 	swapPlayer,
@@ -42,7 +44,7 @@ const CellComponent: FC<CellProps> = ({
 			setShowBlackSwapMenu(false)
 			swapPlayer()
 			
-		}},[whiteReplacementFigure,blackReplacementFigure])
+		}},[swapFigureFlag])
 
 	function setSwapMenu(cell:Cell){
 		if(cell.figure?.name===FigureName.PAWN&&cell.y===0&&cell.figure?.color===Colors.WHITE){

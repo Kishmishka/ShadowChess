@@ -10,8 +10,8 @@ interface TimerProps{
 	goTimer:boolean
 	bonusTime:number
 	startTime:number
-	setGoRip:(rip:boolean)=>void
 	goRip:boolean
+	setGoRip:(rip:boolean)=>void
 }
 
 
