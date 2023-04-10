@@ -194,6 +194,12 @@ const BoardComponent:FC<BoardProps> = (
 					selected={cell.x === selectedCell?.x && cell.y === selectedCell?.y}
 					whiteReplacementFigure = {whiteReplacementFigure}
 					blackReplacementFigure = {blackReplacementFigure}
+					setBlackMate={setBlackMate}
+					setWhiteMate={setWhiteMate}
+					setWhiteGoRip={setWhiteGoRip}
+					setBlackGoRip={setBlackGoRip}
+					setWhiteKingForCheck={setWhiteKingForCheck}
+					setBlackKingForCheck={setBlackKingForCheck}
 					setShowBlackSwapMenu={setShowBlackSwapMenu}
 					setShowWhiteSwapMenu={setShowWhiteSwapMenu}
 					swapPlayer={swapPlayer}

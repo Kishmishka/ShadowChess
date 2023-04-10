@@ -19,6 +19,12 @@ interface CellProps{
 	swapPlayer: () => void
 	setShowWhiteSwapMenu:(show:boolean) => void
 	setShowBlackSwapMenu:(show:boolean) => void
+	setWhiteKingForCheck:(chek:boolean) => void
+	setBlackKingForCheck:(chek:boolean) => void
+	setBlackGoRip:(rip:boolean) => void
+	setWhiteGoRip:(rip:boolean) => void
+	setBlackMate:(mate:boolean) => void
+	setWhiteMate:(mate:boolean) => void
 }
 
 const CellComponent: FC<CellProps> = ({
@@ -28,8 +34,14 @@ const CellComponent: FC<CellProps> = ({
 	swapFigureFlag,
 	blackReplacementFigure, 
 	whiteReplacementFigure,
+	setBlackGoRip,
+	setWhiteGoRip,
+	setBlackMate,
+	setWhiteMate,
 	swapPlayer,
-	clickCell, 
+	clickCell,
+	setBlackKingForCheck,
+	setWhiteKingForCheck,
 	setShowBlackSwapMenu,
 	setShowWhiteSwapMenu}) => {
 	
@@ -37,6 +49,25 @@ const CellComponent: FC<CellProps> = ({
 		if(cell.figure?.name===FigureName.PAWN&&cell.y===0&&cell.figure?.color===Colors.WHITE){
 			setReplacementFigure(cell,whiteReplacementFigure,Colors.WHITE)
 			setShowWhiteSwapMenu(false)
+
+			const colorCheck=cell.board.CheckForCheck()
+
+			if(colorCheck===Colors.BlACK){
+				setBlackKingForCheck(true)
+				const mate = cell.board.CheckForMate(colorCheck)
+				setWhiteMate(mate)
+				setBlackGoRip(mate)
+			}
+			if(colorCheck===Colors.WHITE){
+				setWhiteKingForCheck(true)
+				const mate = cell.board.CheckForMate(colorCheck)
+				setBlackMate(mate)
+				setWhiteGoRip(mate)
+			}
+			if(colorCheck===Colors.NOT){
+				setWhiteKingForCheck(false);
+				setShowBlackSwapMenu(false)
+			}
 			swapPlayer()
 		}
 		if(cell.figure?.name===FigureName.PAWN&&cell.y===7&&cell.figure?.color===Colors.BlACK){
@@ -70,7 +101,7 @@ const CellComponent: FC<CellProps> = ({
 				cell.figure = new Bishop(color, cell)
 				break
 		}
-
+		
 	}
 	
 	return(
