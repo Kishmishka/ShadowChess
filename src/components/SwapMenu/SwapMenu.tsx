@@ -31,15 +31,21 @@ const SwapMenu: FC<SwapMenuProps> = ({playerColor, showWhiteSwapMenu,swapFigureF
 				<img src={playerColor===Colors.WHITE? queenWhiteLogo:queenBlackLogo}  alt="" />
 			</div>
 			<div className="swapMenu__element"
-			onClick={()=>{setReplacementFigure(FigureName.ROOK)}}>
+			onClick={()=>{
+				setReplacementFigure(FigureName.ROOK);
+				setSwapFigureFlag(!swapFigureFlag);}}>
 				<img src={playerColor===Colors.WHITE? rookWhiteLogo:rookBlackLogo}  alt="" />
 			</div>
 			<div className="swapMenu__element"
-			onClick={()=>{setReplacementFigure(FigureName.KNIGHT)}}>
+			onClick={()=>
+				{setReplacementFigure(FigureName.KNIGHT);
+				setSwapFigureFlag(!swapFigureFlag);}}>
 				<img src={playerColor===Colors.WHITE? knightWhiteLogo:knightBlackLogo}  alt="" />
 			</div>
 			<div className="swapMenu__element"
-			onClick={()=>{setReplacementFigure(FigureName.BISHOP)}}>
+			onClick={()=>{
+				setReplacementFigure(FigureName.BISHOP)
+				setSwapFigureFlag(!swapFigureFlag);}}>
 				<img src={playerColor===Colors.WHITE? bishopWhiteLogo:bishopBlackLogo}  alt="" />
 			</div>
 		</div>
