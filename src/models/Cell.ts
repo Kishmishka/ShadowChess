@@ -84,7 +84,7 @@ export class Cell{
 	
 	goBack(target:Cell){
 		if(this.figure){
-			this.figure.goBack(target)
+			this.figure.goBackFigure(target);
 			target.setFigure(this.figure);
 			if(this.recentlyEaten !== null){
 				this.figure=this.recentlyEaten
@@ -94,10 +94,12 @@ export class Cell{
 				else{
 					this.board.lostWhiteFigures.pop()
 				}
-				this.recentlyEaten = null
+				
 			}else{
 				this.figure=null;
+				
 			}
+			this.recentlyEaten = null
 		}
 	}
 
@@ -118,8 +120,8 @@ export class Cell{
 	cancelSmallCastling(){
 		this.board.getCell(this.x+2,this.y).moveWithoutRules(this)
 		this.board.getCell(this.x+1,this.y).moveWithoutRules(this.board.getCell(this.x+3,this.y))
-		this.figure?.goBackFigure();
-		this.board.getCell(this.x+3,this.y).figure?.goBackFigure()
+		this.figure?.goBackFigure(this);
+		this.board.getCell(this.x+3,this.y).figure?.goBackFigure(this)
 	}
 
 	bigCastling(){
@@ -132,8 +134,8 @@ export class Cell{
 	cancelBigCastling(){
 		this.board.getCell(this.x-2,this.y).moveWithoutRules(this)
 		this.board.getCell(this.x-1,this.y).moveWithoutRules(this.board.getCell(this.x-4,this.y))
-		this.figure?.goBackFigure();
-		this.board.getCell(this.x-4,this.y).figure?.goBackFigure()
+		this.figure?.goBackFigure(this);
+		this.board.getCell(this.x-4,this.y).figure?.goBackFigure(this)
 	}
 
 	moveFigure(target:Cell){

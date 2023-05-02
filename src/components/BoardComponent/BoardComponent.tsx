@@ -109,7 +109,7 @@ const BoardComponent:FC<BoardProps> = (
 					}
 					swapPlayer()
 					setSelectedCell(null)
-					
+					clearRecentlyEaten()
 				}
 			}else{
 				if(colorCheck===Colors.BlACK){
@@ -151,7 +151,7 @@ const BoardComponent:FC<BoardProps> = (
 							}
 							swapPlayer()
 							setSelectedCell(null)
-							
+							clearRecentlyEaten()
 						}
 				}
 			}
@@ -165,16 +165,26 @@ const BoardComponent:FC<BoardProps> = (
 		if(showWhiteSwapMenu||showBlackSwapMenu){
 			setSelectedCell(null)
 		}
-		if(selectedCell && selectedCell== cell){
+		if(selectedCell && selectedCell == cell){
 			setSelectedCell(null)
 		}
+		// if(selectedCell?.figure?.color===Colors.WHITE){
+		// 	board.lostWhiteFigures
+		// }
 	}
 	
 	function highLightCells(){
 		board.highLightCells(selectedCell)
 		updateBoard()
 	}
+	function clearRecentlyEaten(){
+		for (let i = 0; i < board.cells.length; i++) {
+			for (let j = 0; j < board.cells[0].length; j++) {
+				board.cells[i][j].recentlyEaten=null;
+			}
+		}
 
+	}
 	function updateBoard(){
 		const newBoard = board.getCopyBoard()
 		setBoards(newBoard);

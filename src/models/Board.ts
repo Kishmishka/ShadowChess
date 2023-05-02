@@ -51,15 +51,11 @@ export class Board{
 					
 				 for (const iter of returnValue.avalibleCells) {
 					this.cells[i][j].moveFigure(iter)
-					console.log(this.cells[i][j])
-					console.log(colorCheck)
 					if(this.CheckForCheck()===Colors.NOT){
 						iter.goBack(this.cells[i][j])
 						return false
 					}
 					iter.goBack(this.cells[i][j])
-					
-					
 				 }
 				 returnValue.avalibleCells=[];
 				}
@@ -79,7 +75,7 @@ export class Board{
 		for (let i = 0; i < this.cells.length; i++) {
 			const row = this.cells[i];
 			for (let j = 0; j < row.length; j++) {
-				const target = row[j];
+				const target:Cell = row[j];
 				target.avalible = !!selectedCels?.figure?.canMove(target)
 				if(this.cells[i][j].avalible){
 					returnValue.avalibleCells.push(this.cells[i][j])

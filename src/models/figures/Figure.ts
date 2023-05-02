@@ -63,13 +63,12 @@ export class Figure{
 		}
 	}
 	
-	goBack(target: Cell){
-	}
+	// goBack(target: Cell){
+	// }
 	
 	moveFigure(target: Cell){
-		
 	}
 
-	goBackFigure(): void {
+	goBackFigure(target:Cell): void {
 	}
 }

@@ -45,7 +45,9 @@ export class King extends Figure {
 		this.isFirstStep = false;
 	}
 
-	goBackFigure(): void {
-		this.isFirstStep = true;
+	goBackFigure(target: Cell): void {
+		if(this.color===Colors.WHITE && target.y===7  || this.color===Colors.BlACK && target.y===0){
+			this.isFirstStep = true;
+		}
 	}
 }

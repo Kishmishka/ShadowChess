@@ -36,11 +36,12 @@ export class Pawn extends Figure {
 		return false
 	}
 
-	goBack(target: Cell): void {
-		super.moveFigure(target);
-		this.isFirstStep = true;
+	goBackFigure(target:Cell): void {
+		if(this.color===Colors.WHITE && target.y===6 || this.color===Colors.BlACK && target.y===1){
+			this.isFirstStep = true;
+		}
+		
 	}
-	
 	moveFigure(target: Cell): void {
 		super.moveFigure(target);
 		this.isFirstStep = false;
