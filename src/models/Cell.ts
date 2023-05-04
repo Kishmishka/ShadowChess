@@ -121,6 +121,8 @@ export class Cell{
 		this.board.getCell(this.x+2,this.y).moveWithoutRules(this)
 		this.board.getCell(this.x+1,this.y).moveWithoutRules(this.board.getCell(this.x+3,this.y))
 		this.figure?.goBackFigure(this);
+		this.figure?.goBackFigure(this);
+		this.board.getCell(this.x+3,this.y).figure?.goBackFigure(this)
 		this.board.getCell(this.x+3,this.y).figure?.goBackFigure(this)
 	}
 
@@ -135,6 +137,8 @@ export class Cell{
 		this.board.getCell(this.x-2,this.y).moveWithoutRules(this)
 		this.board.getCell(this.x-1,this.y).moveWithoutRules(this.board.getCell(this.x-4,this.y))
 		this.figure?.goBackFigure(this);
+		this.figure?.goBackFigure(this);
+		this.board.getCell(this.x-4,this.y).figure?.goBackFigure(this)
 		this.board.getCell(this.x-4,this.y).figure?.goBackFigure(this)
 	}
 

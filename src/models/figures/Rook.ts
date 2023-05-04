@@ -5,7 +5,7 @@ import blackLogo from '../../img/figures/blad.png'
 import whiteLogo from '../../img/figures/lad.png'
 
 export class Rook extends Figure {
-	isFirstStep: boolean = true;
+	isFirstStep: number = 0;
 	constructor(color:Colors, cell:Cell){
 		super(color, cell);
 		this.logo = color === Colors.WHITE ? whiteLogo:blackLogo;
@@ -27,12 +27,12 @@ export class Rook extends Figure {
 	}
 	moveFigure(target: Cell): void {
 		super.moveFigure(target);
-		this.isFirstStep = false;
+		this.isFirstStep +=1;
 	}
 
 	goBackFigure(target: Cell): void {
 		if(this.color===Colors.WHITE && target.y===7  || this.color===Colors.BlACK && target.y===0){
-			this.isFirstStep = true;
+			this.isFirstStep -=1;
 		}
 	}
 }

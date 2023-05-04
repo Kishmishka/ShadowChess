@@ -20,7 +20,7 @@ export class Figure{
 	cell: Cell;
 	name: FigureName;
 	id: number;
-	isFirstStep: boolean = true;
+	isFirstStep: number = 0;
 	constructor(color: Colors, cell:Cell){
 		this.color = color;
 		this.cell = cell;

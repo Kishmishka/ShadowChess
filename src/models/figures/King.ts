@@ -5,7 +5,7 @@ import blackLogo from '../../img/figures/bking.png'
 import whiteLogo from '../../img/figures/king.png'
 
 export class King extends Figure {
-	isFirstStep: boolean = true;
+	isFirstStep: number = 0;
 	constructor(color:Colors, cell:Cell){
 		super(color, cell);
 		this.logo = color === Colors.WHITE ? whiteLogo:blackLogo;
@@ -17,18 +17,18 @@ export class King extends Figure {
 			return false
 		}
 		
-		if(this.isFirstStep && target.y===this.cell.y &&(target.x===this.cell.x+2) &&
+		if(this.isFirstStep===0 && target.y===this.cell.y &&(target.x===this.cell.x+2) &&
 			(target.board.getCell(this.cell.x+1,this.cell.y).isEmpty()
 			&&target.board.getCell(this.cell.x+2,this.cell.y).isEmpty())
-			&&target.board.getCell(this.cell.x+3,this.cell.y).figure?.isFirstStep){
+			&&target.board.getCell(this.cell.x+3,this.cell.y).figure?.isFirstStep===0){
 				return true
 		}
 		
-		if(this.isFirstStep && target.y===this.cell.y && (target.x===this.cell.x-2) &&
+		if(this.isFirstStep===0 && target.y===this.cell.y && (target.x===this.cell.x-2) &&
 		(target.board.getCell(this.cell.x-1,this.cell.y).isEmpty())
 		&&(target.board.getCell(this.cell.x-2,this.cell.y).isEmpty())
 		&&(target.board.getCell(this.cell.x-3,this.cell.y).isEmpty())
-		&&(target.board.getCell(this.cell.x-4,this.cell.y).figure?.isFirstStep)){
+		&&(target.board.getCell(this.cell.x-4,this.cell.y).figure?.isFirstStep===0)){
 				
 			return true
 		}
@@ -42,12 +42,12 @@ export class King extends Figure {
 
 	moveFigure(target: Cell): void {
 		super.moveFigure(target);
-		this.isFirstStep = false;
+		this.isFirstStep +=1;
 	}
 
 	goBackFigure(target: Cell): void {
 		if(this.color===Colors.WHITE && target.y===7  || this.color===Colors.BlACK && target.y===0){
-			this.isFirstStep = true;
+			this.isFirstStep -=1;
 		}
 	}
 }

@@ -30,7 +30,7 @@ function App() {
  const [rotate, setRotate] = useState <Number>(0);
  const [whiteFigureSumm, setWhiteFigureSumm]=useState<number>(0)
  const [blackFigureSumm, setBlackFigureSumm]=useState<number>(0)
- const [goTimer, setGoTimer] = useState (false)
+ 
  const [whiteMate, setWhiteMate] = useState(false)
  const [blackMate, setBlackMate] = useState(false)
  const [whiteGoRip, setWhiteGoRip] = useState (false)
@@ -46,7 +46,7 @@ function App() {
  const [startTime, setStartTime] = useState(10)
  const [bonusTime, setBonusTime] = useState(0)
  const [showTime, setShowTime] = useState(false)
-
+ const [goTimer, setGoTimer] = useState (false)
 useEffect(()=>{
 	restart()
 	setCurrentPlayer(whitePlayer)
